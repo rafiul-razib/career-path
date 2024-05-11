@@ -12,6 +12,7 @@ export default {
       maxHeight: {
         '550px': '550px',
       },
+      padding: ['hover']
     },
     
   },
