@@ -3,13 +3,13 @@ import { useState } from "react";
 const HeroTabs = () => {
   const tabs = [
     { name: "All Jobs", link: "#" },
-    { name: "Onsite Jobs", link: "#" },
+    { name: "On-site Jobs", link: "#" },
     { name: "Remote Jobs", link: "#" },
     { name: "Hybrid Jobs", link: "#" },
     { name: "Part-Time Jobs", link: "#" },
   ];
 
-  const [currentTab, setCurrentTab] = useState("Services");
+  const [currentTab, setCurrentTab] = useState("All Jobs");
   return (
     <div className="mt-4">
       <div className="text-center my-12">
