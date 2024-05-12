@@ -1,0 +1,135 @@
+[
+    {
+      "photoUrl": "https://i.ibb.co/Y71MXb1/crafted-Reflection-6.jpg",
+      "jobTitle": "Frontend Developer",
+      "user": "rafiul.rzb@gmail.com",
+      "jobCategory": "On-site Job",
+      "salaryRange": "$70,000 - $90,000",
+      "jobDescription": "We are looking for a talented Frontend Developer to join our team in our office location. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience in frameworks such as React or Angular.",
+      "jobPosting": "May 12, 2024",
+      "deadline": "June 12, 2024",
+      "totalApplicants": 30
+    },
+    {
+      "photoUrl": "https://i.ibb.co/G5Qpxrk/crafted-Reflection-7.jpg",
+      "jobTitle": "Marketing Manager",
+      "user": "admin@careerpath.com",
+      "jobCategory": "On-site Job",
+      "salaryRange": "$80,000 - $100,000",
+      "jobDescription": "We are seeking an experienced Marketing Manager to lead our marketing team at our headquarters. The role involves developing and executing marketing strategies to drive brand awareness and customer engagement.",
+      "jobPosting": "May 15, 2024",
+      "deadline": "June 15, 2024",
+      "totalApplicants": 25
+    },
+    {
+      "photoUrl": "https://i.ibb.co/QMmCmN9/crafted-Reflection-8.jpg",
+      "jobTitle": "Data Analyst",
+      "user": "rafiul.razib@gmail.com",
+      "jobCategory": "On-site Job",
+      "salaryRange": "$60,000 - $80,000",
+      "jobDescription": "We are hiring a Data Analyst to join our analytics team at our office. The role involves analyzing data to provide insights and support decision-making processes across various departments.",
+      "jobPosting": "May 18, 2024",
+      "deadline": "June 18, 2024",
+      "totalApplicants": 20
+    },
+    {
+      "photoUrl": "https://i.ibb.co/phJkVVq/crafted-Reflection-16.jpg",
+      "jobTitle": "Content Writer",
+      "user": "rafiul.rzb@gmail.com",
+      "jobCategory": "Remote Job",
+      "salaryRange": "$50,000 - $70,000",
+      "jobDescription": "We are seeking a talented Content Writer to work remotely on creating engaging and SEO-friendly content for our blog, website, and social media channels.",
+      "jobPosting": "May 20, 2024",
+      "deadline": "June 20, 2024",
+      "totalApplicants": 40
+    },
+    {
+      "photoUrl": "https://i.ibb.co/HTH2Mgx/crafted-Reflection-15.jpg",
+      "jobTitle": "UX/UI Designer",
+      "user": "admin@careerpath.com",
+      "jobCategory": "Remote Job",
+      "salaryRange": "$70,000 - $90,000",
+      "jobDescription": "We are hiring a Remote UX/UI Designer to collaborate with our product team in designing intuitive and visually appealing user interfaces for our web and mobile applications.",
+      "jobPosting": "May 22, 2024",
+      "deadline": "June 22, 2024",
+      "totalApplicants": 35
+    },
+    {
+      "photoUrl": "https://i.ibb.co/Fsp9WNW/crafted-Reflection-3.jpg",
+      "jobTitle": "Customer Support Specialist",
+      "user": "rafiul.razib@gmail.com",
+      "jobCategory": "Remote Job",
+      "salaryRange": "$45,000 - $60,000",
+      "jobDescription": "We are looking for a Remote Customer Support Specialist to provide exceptional customer service via email, chat, and phone to our global customer base.",
+      "jobPosting": "May 25, 2024",
+      "deadline": "June 25, 2024",
+      "totalApplicants": 45
+    },
+    {
+      "photoUrl": "https://i.ibb.co/ZTxHcR3/crafted-Reflection-1.jpg",
+      "jobTitle": "Sales Representative",
+      "user": "rafiul.rzb@gmail.com",
+      "jobCategory": "Hybrid",
+      "salaryRange": "$60,000 - $80,000",
+      "jobDescription": "We are hiring a Hybrid Sales Representative to manage client relationships and generate sales leads. This role involves a combination of remote work and occasional travel to client sites.",
+      "jobPosting": "May 28, 2024",
+      "deadline": "June 28, 2024",
+      "totalApplicants": 30
+    },
+    {
+      "photoUrl": "https://i.ibb.co/h1gScG6/crafted-Reflection-2.jpg",
+      "jobTitle": "Project Manager",
+      "user": "admin@careerpath.com",
+      "jobCategory": "Hybrid",
+      "salaryRange": "$80,000 - $100,000",
+      "jobDescription": "We are seeking an experienced Project Manager to oversee the planning, execution, and delivery of projects. This position involves a mix of remote collaboration and on-site meetings.",
+      "jobPosting": "May 30, 2024",
+      "deadline": "June 30, 2024",
+      "totalApplicants": 25
+    },
+    {
+      "photoUrl": "https://i.ibb.co/MR8XgSk/crafted-Reflection-18.jpg",
+      "jobTitle": "Graphic Designer",
+      "user": "rafiul.razib@gmail.com",
+      "jobCategory": "Hybrid",
+      "salaryRange": "$55,000 - $75,000",
+      "jobDescription": "We are looking for a Hybrid Graphic Designer to create visual concepts and designs for various marketing materials. This role offers flexibility with both remote and on-site work options.",
+      "jobPosting": "June 2, 2024",
+      "deadline": "July 2, 2024",
+      "totalApplicants": 20
+    },
+    {
+      "photoUrl": "https://i.ibb.co/nQPkWz3/crafted-Reflection-5.jpg",
+      "jobTitle": "Social Media Specialist",
+      "user": "rafiul.rzb@gmail.com",
+      "jobCategory": "Part-Time",
+      "salaryRange": "$25,000 - $35,000 (Pro-rated)",
+      "jobDescription": "We are seeking a Part-Time Social Media Specialist to manage our social media accounts and create engaging content. This role offers flexibility with approximately 20 hours per week.",
+      "jobPosting": "June 5, 2024",
+      "deadline": "July 5, 2024",
+      "totalApplicants": 15
+    },
+    {
+      "photoUrl": "https://i.ibb.co/Vwv4FVR/crafted-Reflection-20.jpg",
+      "jobTitle": "Administrative Assistant",
+      "user": "admin@careerpath.com",
+      "jobCategory": "Part-Time",
+      "salaryRange": "$20,000 - $30,000 (Pro-rated)",
+      "jobDescription": "We are hiring a Part-Time Administrative Assistant to provide support with administrative tasks such as data entry, scheduling, and correspondence.",
+      "jobPosting": "June 8, 2024",
+      "deadline": "July 8, 2024",
+      "totalApplicants": 10
+    },
+    {
+      "photoUrl": "https://i.ibb.co/J5mcK4q/crafted-Reflection-19.jpg",
+      "jobTitle": "Tutor",
+      "user": "rafiul.razib@gmail.com",
+      "jobCategory": "Part-Time",
+      "salaryRange": "$20 - $40 per hour",
+      "jobDescription": "We are seeking Part-Time Tutors to provide academic support to students in various subjects. This role offers flexible hours and the opportunity to work remotely or in-person.",
+      "jobPosting": "June 10, 2024",
+      "deadline": "July 10, 2024",
+      "totalApplicants": 20
+    }
+  ]
+  

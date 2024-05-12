@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const links = (
     <>
-      <NavLink className={"mr-8"} to={"/allJobs"}>
+      <NavLink className={"mr-8"} to={"/allListedJobs"}>
         All Jobs
       </NavLink>
 

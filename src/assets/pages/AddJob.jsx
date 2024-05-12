@@ -1,7 +1,10 @@
 import { useState } from "react";
+import DateSelector from "../components/DateSelector";
 
 const AddJob = () => {
   const [focused, setFocused] = useState(false);
+
+  const [applicationDeadline, setApplicationDeadline] = useState(null);
 
   const handleAddJob = (e) => {
     e.preventDefault();
@@ -12,9 +15,21 @@ const AddJob = () => {
     const jobCategory = form.jobCategory.value;
     const salaryRange = form.salaryRange.value;
     const jobDescription = form.jobDescription.value;
-    const jobPOstingDate = form.jobPOstingDate.value;
-    const applicationDeadline = form.applicationDeadline.value;
+    const jobPosting = form.jobPostingDate.value;
+    const deadline = applicationDeadline;
     const totalApplicants = form.totalApplicants.value;
+
+    console.log({
+      photoUrl,
+      jobTitle,
+      user,
+      jobCategory,
+      salaryRange,
+      jobDescription,
+      jobPosting,
+      deadline,
+      totalApplicants,
+    });
   };
   return (
     <div className="w-full flex flex-wrap justify-center items-center bg-gray-800">
@@ -37,6 +52,7 @@ const AddJob = () => {
           </span>
           {/* Input */}
           <input
+            required
             type="text"
             name="photoUrl"
             id="photoUrl"
@@ -72,6 +88,7 @@ const AddJob = () => {
             </span>
             {/* Input */}
             <input
+              required
               type="text"
               name="jobTitle"
               id="jobTitle"
@@ -141,15 +158,28 @@ const AddJob = () => {
               {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
             </span>
             {/* Input */}
-            <input
+            {/* <input
               type="text"
               name="jobCategory"
               id="jobCategory"
-              placeholder="User Name"
+              placeholder="Job Category"
               className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
               onFocus={() => setFocused(4)}
               onBlur={() => setFocused(null)}
-            />
+            /> */}
+            <select
+              name="jobCategory"
+              id="jobCategory"
+              placeholder="Job Category"
+              className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-gray-700  text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
+              onFocus={() => setFocused(4)}
+              onBlur={() => setFocused(null)}
+            >
+              <option value="On-site Job">On-site Job</option>
+              <option value="Remote Job">Remote Job</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Part-Time">Part-Time</option>
+            </select>
             {/* Border bottom effect */}
             <span
               className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 ease-in transform ${
@@ -246,11 +276,12 @@ const AddJob = () => {
               {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
             </span>
             {/* Input */}
+
             <input
-              type="search"
-              name="photoUrl"
-              id="photoUrl"
-              placeholder="Photo URL"
+              type="date"
+              name="jobPostingDate"
+              id="jobPostingDate"
+              placeholder="Job Posting Date"
               className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
               onFocus={() => setFocused(7)}
               onBlur={() => setFocused(null)}
@@ -281,17 +312,7 @@ const AddJob = () => {
             <span className="absolute bottom-2 left-0 pl-3 inline-flex items-center pointer-events-none">
               {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
             </span>
-            {/* Input */}
-            <input
-              type="search"
-              name="photoUrl"
-              id="photoUrl"
-              placeholder="Photo URL"
-              className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
-              onFocus={() => setFocused(8)}
-              onBlur={() => setFocused(null)}
-            />
-            {/* Border bottom effect */}
+            <DateSelector setApplicationDeadline={setApplicationDeadline} />
             <span
               className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 ease-in transform ${
                 focused === 8 ? "w-full" : "w-0"
@@ -318,6 +339,7 @@ const AddJob = () => {
             {/* Input */}
             <input
               type="number"
+              defaultValue={0}
               name="totalApplicants"
               id="totalApplicants"
               placeholder="Total Applicants"

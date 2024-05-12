@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import JobCard from "./JobCard";
+import { Link, Outlet } from "react-router-dom";
 
 const HeroTabs = () => {
   const tabs = [
-    { name: "All Jobs", link: "#" },
-    { name: "On-site Jobs", link: "#" },
-    { name: "Remote Jobs", link: "#" },
-    { name: "Hybrid Jobs", link: "#" },
-    { name: "Part-Time Jobs", link: "#" },
+    { name: "All Jobs", jobCategory: "All jobs", link: "" },
+    { name: "On-site Jobs", jobCategory: "On-site Job", link: "onSiteJobs" },
+    { name: "Remote Jobs", jobCategory: "Remote Job", link: "remoteJobs" },
+    { name: "Hybrid Jobs", jobCategory: "Hybrid", link: "hybridJobs" },
+    { name: "Part-Time Jobs", jobCategory: "Part-Time", link: "partTimeJobs" },
   ];
 
+  const [jobs, setJobs] = useState([]);
+  // const [selectedJobs, setSelectedJobs] = useState(jobs);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/allJobs")
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, []);
+
   const [currentTab, setCurrentTab] = useState("All Jobs");
+  // console.log(currentTab);
+
   return (
     <div className="mt-4">
       <div className="text-center my-12">
@@ -38,7 +51,7 @@ const HeroTabs = () => {
               <option
                 key={tab.name}
                 value={tab.name}
-                onClick={() => setCurrentTab(tab.name)}
+                onClick={() => setCurrentTab(tab.jobCategory)}
               >
                 {tab.name}
               </option>
@@ -60,19 +73,27 @@ const HeroTabs = () => {
                       : "text-gray-400 hover:bg-gray-50 hover:text-gray-500"
                   } ${index !== 0 && "border-l border-gray-200"}`}
                 >
-                  <button
-                    type="button"
-                    className="p-3 w-full inline-flex justify-center items-center text-center text-base font-semibold"
-                    onClick={() => setCurrentTab(tab.name)}
-                  >
-                    {tab.name}
-                  </button>
+                  <Link to={tab.link}>
+                    <button
+                      type="button"
+                      className="p-3 w-full inline-flex justify-center items-center text-center text-base font-semibold"
+                      onClick={() => setCurrentTab(tab.name)}
+                    >
+                      {tab.name}
+                    </button>
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
         </div>
       </div>
+      <Outlet></Outlet>
+      {/* <div className="max-w-6xl mx-auto my-6 grid grid-cols-3 gap-6">
+        {jobs.map((item, idx) => (
+          <JobCard key={idx} item={item} />
+        ))}
+      </div> */}
     </div>
   );
 };
