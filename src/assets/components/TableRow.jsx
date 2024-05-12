@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TableRow = ({ job, idx }) => {
-  const { jobTitle, salaryRange, jobPosting, deadline } = job;
+  const { _id, jobTitle, salaryRange, jobPosting, deadline } = job;
 
   console.log(idx);
   return (
@@ -32,12 +33,14 @@ const TableRow = ({ job, idx }) => {
       {/* ::Action Buttons */}
       <td className="py-3 px-4 flex justify-around items-center space-x-6 text-base text-gray-700 font-medium">
         {/* :::edit button */}
-        <button
-          type="button"
-          className="text-sm text-indigo-400 font-semibold hover:underline hover:text-indigo-500"
-        >
-          Details
-        </button>
+        <Link to={`/job/${_id}`}>
+          <button
+            type="button"
+            className="text-sm text-indigo-400 font-semibold hover:underline hover:text-indigo-500"
+          >
+            Details
+          </button>
+        </Link>
       </td>
     </tr>
   );
