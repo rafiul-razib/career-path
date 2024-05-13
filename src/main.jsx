@@ -19,6 +19,7 @@ import HybridJobs from "./assets/components/HybridJobs.jsx";
 import PartTimeJobs from "./assets/components/PartTimeJobs.jsx";
 import JobDetails from "./assets/pages/JobDetails.jsx";
 import AllJobsList from "./assets/pages/AllJobsList.jsx";
+import AuthProvider from "./assets/firebase/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

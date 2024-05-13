@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { AuthContext } from "../../firebase/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
       <NavLink className={"mr-8"} to={"/allListedJobs"}>
@@ -24,11 +26,15 @@ const Navbar = () => {
       <NavLink className={"mr-8"} to={"/profile"}>
         Profile
       </NavLink>
-      <Link className="mr-8" to="/login">
+      {/* <Link className="mr-8" to="/login">
         <button>Login</button>
-      </Link>
+      </Link> */}
     </>
   );
+
+  const handleLogOut = () => {
+    logOut();
+  };
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="w-full bg-gray-800 text-gray-100 body-font shadow-sm">
@@ -55,22 +61,23 @@ const Navbar = () => {
           {links}
         </nav>
         {/* Avatar */}
-        <div className="hidden sm:inline-flex ml-auto md:ml-0 mr-4 md:mr-0 cursor-pointer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </div>
+        {user ? (
+          <div className="flex items-center gap-4">
+            <button onClick={handleLogOut}>Log Out</button>
+            <div className="hidden sm:inline-flex ml-auto md:ml-0 mr-4 md:mr-0 cursor-pointer">
+              <img
+                className="h-8 w-8 rounded-full"
+                src={user.photoURL}
+                alt=""
+              />
+            </div>
+          </div>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
+
         {/* Burger icon standard */}
         <button
           className="md:hidden rounded-md active:outline-none focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
@@ -140,9 +147,13 @@ const Navbar = () => {
           >
             Profile
           </NavLink>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
+          {user ? (
+            <button onClick={handleLogOut}>Log Out</button>
+          ) : (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          )}
         </div>
       )}
     </header>

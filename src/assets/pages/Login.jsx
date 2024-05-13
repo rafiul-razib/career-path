@@ -1,4 +1,6 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { AuthContext } from "../firebase/AuthProvider";
+import { updateProfile } from "firebase/auth";
 // import Button3b from "./atoms/Button3b";
 
 const Login = () => {
@@ -7,6 +9,9 @@ const Login = () => {
     register: false,
     // forgotPW: false,
   });
+
+  const { googleSignIn, register, signIn, logOut, isLoading, user } =
+    useContext(AuthContext);
   const signInEmailRef = useRef();
   const signInPasswordRef = useRef();
   const signUpUsernameRef = useRef();
@@ -14,19 +19,45 @@ const Login = () => {
   const signUpPasswordRef = useRef();
   const signUpPhotoUrl = useRef();
   const emailForgotPWRef = useRef();
+
+  const handleGoogleSignIn = () => {
+    googleSignIn();
+  };
+  console.log(user);
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
+    const form = e.target;
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        alert("Successfully logged in!!");
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
+    const form = e.target;
     const name = e.target.username.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const photoUrl = e.target.photoUrl.value;
-    console.log(name, email, password, photoUrl);
+    // console.log(name, email, password, photoUrl);
+    register(email, password).then((result) => {
+      updateProfile(result.user, {
+        displayName: name,
+        photoURL: photoUrl,
+      }).then(() => {
+        alert("user created successfully!!");
+        form.reset();
+      });
+      console.log(result.user);
+    });
   };
   const handleResetPassword = (e) => {
     e.preventDefault();
@@ -233,6 +264,9 @@ const Login = () => {
                 </button>
               </div>
             </form>
+            <div>
+              <button onClick={handleGoogleSignIn}>GoogleSignIn</button>
+            </div>
           </div>
 
           {/* ::Register Form */}
