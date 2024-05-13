@@ -1,8 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const TableRow = ({ job, idx }) => {
   const { _id, jobTitle, salaryRange, jobPosting, deadline } = job;
+
+  const handleViewDetails = () => {
+    Swal.fire({
+      title: "Alert!!",
+      text: "You need to login to view details!",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Proceed to Login!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate(`/job/${_id}`);
+      }
+    });
+  };
 
   console.log(idx);
   return (

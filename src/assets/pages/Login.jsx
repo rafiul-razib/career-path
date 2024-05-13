@@ -1,7 +1,8 @@
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
 import { updateProfile } from "firebase/auth";
-// import Button3b from "./atoms/Button3b";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [isForm, setIsForm] = useState({
@@ -9,6 +10,9 @@ const Login = () => {
     register: false,
     // forgotPW: false,
   });
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const { googleSignIn, register, signIn, logOut, isLoading, user } =
     useContext(AuthContext);
@@ -21,7 +25,20 @@ const Login = () => {
   const emailForgotPWRef = useRef();
 
   const handleGoogleSignIn = () => {
-    googleSignIn();
+    googleSignIn()
+      .then((result) => {
+        Swal.fire({
+          title: "Success!",
+          text: "User Logged in successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    navigate(location?.state ? location.state : "/");
   };
   console.log(user);
   const handleSubmitSignIn = (e) => {
@@ -33,10 +50,22 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-        alert("Successfully logged in!!");
+        Swal.fire({
+          title: "Success!",
+          text: "User Logged in successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
         form.reset();
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
         console.log(error);
       });
   };
@@ -48,16 +77,31 @@ const Login = () => {
     const password = e.target.password.value;
     const photoUrl = e.target.photoUrl.value;
     // console.log(name, email, password, photoUrl);
-    register(email, password).then((result) => {
-      updateProfile(result.user, {
-        displayName: name,
-        photoURL: photoUrl,
-      }).then(() => {
-        alert("user created successfully!!");
-        form.reset();
+    register(email, password)
+      .then((result) => {
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: photoUrl,
+        }).then(() => {
+          Swal.fire({
+            title: "Success!",
+            text: "User Logged in successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          form.reset();
+        });
+        navigate(location?.state ? location.state : "/");
+        console.log(result.user);
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
       });
-      console.log(result.user);
-    });
   };
   const handleResetPassword = (e) => {
     e.preventDefault();

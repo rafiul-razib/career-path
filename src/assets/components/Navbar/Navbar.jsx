@@ -7,25 +7,37 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
+      <NavLink className={"mr-8"} to={"/"}>
+        Home
+      </NavLink>
       <NavLink className={"mr-8"} to={"/allListedJobs"}>
         All Jobs
       </NavLink>
 
-      <NavLink className={"mr-8"} to={"/appliedJobs"}>
-        Applied Jobs
+      {user && (
+        <>
+          <NavLink className={"mr-8"} to={"/appliedJobs"}>
+            Applied Jobs
+          </NavLink>
+
+          <NavLink className={"mr-8"} to={"/addJob"}>
+            Add a Job
+          </NavLink>
+
+          <NavLink className={"mr-8"} to={"/myJobs"}>
+            My Jobs
+          </NavLink>
+        </>
+      )}
+      <NavLink className={"mr-8"} to={"/blogs"}>
+        Blogs
       </NavLink>
 
-      <NavLink className={"mr-8"} to={"/addJob"}>
-        Add a Job
-      </NavLink>
-
-      <NavLink className={"mr-8"} to={"/myJobs"}>
-        My Jobs
-      </NavLink>
-
-      <NavLink className={"mr-8"} to={"/profile"}>
-        Profile
-      </NavLink>
+      {user && (
+        <NavLink className={"mr-8"} to={"/profile"}>
+          Profile
+        </NavLink>
+      )}
       {/* <Link className="mr-8" to="/login">
         <button>Login</button>
       </Link> */}
@@ -66,6 +78,7 @@ const Navbar = () => {
             <button onClick={handleLogOut}>Log Out</button>
             <div className="hidden sm:inline-flex ml-auto md:ml-0 mr-4 md:mr-0 cursor-pointer">
               <img
+                title={user.displayName}
                 className="h-8 w-8 rounded-full"
                 src={user.photoURL}
                 alt=""
@@ -107,46 +120,68 @@ const Navbar = () => {
             className={
               "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
             }
+            to={"/"}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={
+              "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
+            }
             to={"/allJobs"}
           >
             All Jobs
           </NavLink>
 
+          {user && (
+            <>
+              <NavLink
+                className={
+                  "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
+                }
+                to={"/appliedJobs"}
+              >
+                Applied Jobs
+              </NavLink>
+
+              <NavLink
+                className={
+                  "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
+                }
+                to={"/addJob"}
+              >
+                Add a Job
+              </NavLink>
+
+              <NavLink
+                className={
+                  "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
+                }
+                to={"/myJobs"}
+              >
+                My Jobs
+              </NavLink>
+            </>
+          )}
           <NavLink
             className={
               "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
             }
-            to={"/appliedJobs"}
+            to={"/blogs"}
           >
-            Applied Jobs
+            Blogs
           </NavLink>
 
-          <NavLink
-            className={
-              "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-            }
-            to={"/addJob"}
-          >
-            Add a Job
-          </NavLink>
-
-          <NavLink
-            className={
-              "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-            }
-            to={"/myJobs"}
-          >
-            My Jobs
-          </NavLink>
-
-          <NavLink
-            className={
-              "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-            }
-            to={"/profile"}
-          >
-            Profile
-          </NavLink>
+          {user && (
+            <NavLink
+              className={
+                "block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
+              }
+              to={"/profile"}
+            >
+              Profile
+            </NavLink>
+          )}
           {user ? (
             <button onClick={handleLogOut}>Log Out</button>
           ) : (

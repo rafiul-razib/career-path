@@ -20,6 +20,7 @@ import PartTimeJobs from "./assets/components/PartTimeJobs.jsx";
 import JobDetails from "./assets/pages/JobDetails.jsx";
 import AllJobsList from "./assets/pages/AllJobsList.jsx";
 import AuthProvider from "./assets/firebase/AuthProvider.jsx";
+import PrivateRoute from "./assets/firebase/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,11 @@ const router = createBrowserRouter([
 
       {
         path: "/job/:id",
-        element: <JobDetails />,
+        element: (
+          <PrivateRoute>
+            <JobDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => fetch(`http://localhost:3000/job/${params.id}`),
       },
       {

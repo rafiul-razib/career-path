@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DateSelector from "../components/DateSelector";
+import { AuthContext } from "../firebase/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddJob = () => {
+  const { user } = useContext(AuthContext);
   const [focused, setFocused] = useState(false);
 
   const [applicationDeadline, setApplicationDeadline] = useState(null);
@@ -19,7 +23,7 @@ const AddJob = () => {
     const deadline = applicationDeadline;
     const totalApplicants = form.totalApplicants.value;
 
-    console.log({
+    const newJob = {
       photoUrl,
       jobTitle,
       user,
@@ -29,6 +33,17 @@ const AddJob = () => {
       jobPosting,
       deadline,
       totalApplicants,
+    };
+    axios.post("http://localhost:3000/addJob", newJob).then((result) => {
+      if (result.data.insertedId) {
+        Swal.fire({
+          title: "Success!",
+          text: "Job Posted Successfully!!",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+      }
+      console.log(result.data);
     });
   };
   return (
@@ -37,7 +52,7 @@ const AddJob = () => {
         <div className="my-5 relative overflow-hidden">
           {/* Label */}
           <label
-            htmlFor="search"
+            htmlFor="photoUrl"
             className={`bg-gradient-to-r bg-clip-text text-xs text-transparent font-semibold uppercase transition-all duration-300 ${
               focused === 1
                 ? "from-green-400 to-blue-400"
@@ -123,6 +138,7 @@ const AddJob = () => {
             </span>
             {/* Input */}
             <input
+              value={user.email}
               type="user"
               name="user"
               id="user"

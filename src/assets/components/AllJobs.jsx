@@ -3,7 +3,7 @@ import JobCard from "./JobCard";
 
 const AllJobs = () => {
   const jobs = useLoaderData();
-  // console.log(jobs);
+
   return (
     <div>
       <div className="max-w-6xl mx-auto my-6 grid grid-cols-3 gap-6">

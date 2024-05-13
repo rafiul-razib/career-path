@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const JobCard = ({ item }) => {
   const {
@@ -13,6 +14,25 @@ const JobCard = ({ item }) => {
     deadline,
     totalApplicants,
   } = item;
+
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    Swal.fire({
+      title: "Alert!!",
+      text: "You need to login to view details!",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Proceed to Login!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate(`/job/${_id}`);
+      }
+    });
+  };
+
   return (
     <div className="col-span-1 group relative p-2 pb-5 flex flex-col items-center border-2 border-transparent rounded-xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm hover:shadow-xl hover:border-gray-500">
       <div className="relative max-h-52 rounded-2xl overflow-hidden">
@@ -59,14 +79,13 @@ const JobCard = ({ item }) => {
         </div>
         {/* :::bid infos */}
         <span className="flex justify-between items-center">
-          <Link to={`/job/${_id}`}>
-            <button
-              type="button"
-              className="mt-4 relative inline-flex items-center px-2.5 py-1.5 rounded-full bg-gradient-to-t from-gray-600 to-gray-200 text-xs text-white font-bold tracking-wide hover:to-gray-600"
-            >
-              View Details
-            </button>
-          </Link>
+          <button
+            type="button"
+            onClick={handleViewDetails}
+            className="mt-4 relative inline-flex items-center px-2.5 py-1.5 rounded-full bg-gradient-to-t from-gray-600 to-gray-200 text-xs text-white font-bold tracking-wide hover:to-gray-600"
+          >
+            View Details
+          </button>
         </span>
       </div>
     </div>
