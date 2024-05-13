@@ -7,7 +7,7 @@ const AllJobsList = () => {
   const [focused, setFocused] = useState(false);
 
   const [inputData, setInputData] = useState("");
-  console.log(inputData);
+  // console.log(inputData);
   return (
     <div className="bg-gray-800">
       <div className=" relative overflow-hidden max-w-4xl mx-auto bg-gray-800 text-left text-gray-100">
@@ -28,7 +28,7 @@ const AllJobsList = () => {
         </span>
         {/* Input */}
         <input
-          onChange={setInputData()}
+          // onChange={setInputData()}
           type="text"
           name="search"
           id="search"

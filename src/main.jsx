@@ -12,6 +12,7 @@ import Login from "./assets/pages/Login.jsx";
 import NotFound from "./assets/pages/NotFound.jsx";
 import Home from "./assets/pages/Home.jsx";
 import AddJob from "./assets/pages/AddJob.jsx";
+import MyJobs from "./assets/pages/MyJobs.jsx";
 import AllJobs from "./assets/components/AllJobs.jsx";
 import RemoteJobs from "./assets/components/RemoteJobs.jsx";
 import OnSiteJobs from "./assets/components/OnSiteJobs.jsx";
@@ -21,6 +22,7 @@ import JobDetails from "./assets/pages/JobDetails.jsx";
 import AllJobsList from "./assets/pages/AllJobsList.jsx";
 import AuthProvider from "./assets/firebase/AuthProvider.jsx";
 import PrivateRoute from "./assets/firebase/PrivateRoute.jsx";
+import UpdateJob from "./assets/pages/UpdateJob.jsx";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +76,14 @@ const router = createBrowserRouter([
         path: "allListedJobs",
         element: <AllJobsList />,
         loader: () => fetch("http://localhost:3000/allJobs"),
+      },
+      {
+        path: "/myJobs",
+        element: <MyJobs />,
+      },
+      {
+        path: "/updateJob/:id",
+        element: <UpdateJob />,
       },
       {
         path: "/login",
