@@ -66,7 +66,13 @@ const MyJobs = () => {
         </thead>
         <tbody>
           {postedJobs.map((job, idx) => (
-            <TableRowMyJobs key={idx} job={job} idx={idx}></TableRowMyJobs>
+            <TableRowMyJobs
+              postedJobs={postedJobs}
+              setPostedJobs={setPostedJobs}
+              key={idx}
+              job={job}
+              idx={idx}
+            ></TableRowMyJobs>
           ))}
         </tbody>
       </table>

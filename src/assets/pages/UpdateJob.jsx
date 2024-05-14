@@ -1,27 +1,53 @@
 import { useState } from "react";
 import DateSelector from "../components/DateSelector";
+import { useLoaderData } from "react-router-dom";
+import moment from "moment";
+import { DatePicker } from "antd";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdateJob = () => {
   const [focused, setFocused] = useState(false);
   const [applicationDeadline, setApplicationDeadline] = useState(null);
 
-  const handleAddJob = (e) => {
+  const formattedDeadline =
+    applicationDeadline &&
+    moment(new Date(applicationDeadline.$d)).format("YYYY-MM-D");
+  console.log(formattedDeadline);
+
+  const job = useLoaderData();
+
+  const {
+    _id,
+    photoUrl,
+    jobTitle,
+
+    jobCategory,
+    salaryRange,
+    jobDescription,
+    jobPosting,
+    deadline,
+    totalApplicants,
+  } = job;
+
+  const formattedDate = moment({ deadline });
+
+  const handleUpdateJob = (e) => {
     e.preventDefault();
     const form = e.target;
     const photoUrl = form.photoUrl.value;
     const jobTitle = form.jobTitle.value;
-    const user = form.user.value;
+
     const jobCategory = form.jobCategory.value;
     const salaryRange = form.salaryRange.value;
     const jobDescription = form.jobDescription.value;
     const jobPosting = form.jobPostingDate.value;
-    const deadline = applicationDeadline;
+    const deadline = formattedDeadline;
     const totalApplicants = form.totalApplicants.value;
 
-    const newJob = {
+    const updatedJob = {
       photoUrl,
       jobTitle,
-      user,
       jobCategory,
       salaryRange,
       jobDescription,
@@ -29,10 +55,34 @@ const UpdateJob = () => {
       deadline,
       totalApplicants,
     };
+
+    Swal.fire({
+      title: "Are you sure??",
+      text: "Operation cannot be reverted!!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Update!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .patch(`http://localhost:3000/job/${_id}`, updatedJob)
+          .then((res) => {
+            console.log(res.data);
+            Swal.fire({
+              title: "Success!",
+              text: "Updated Job successfully",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+          });
+      }
+    });
   };
   return (
     <div className="w-full flex flex-wrap justify-center items-center bg-gray-800">
-      <form onSubmit={handleAddJob}>
+      <form onSubmit={handleUpdateJob}>
         <div className="my-5 relative overflow-hidden">
           {/* Label */}
           <label
@@ -52,6 +102,7 @@ const UpdateJob = () => {
           {/* Input */}
           <input
             required
+            defaultValue={photoUrl}
             type="text"
             name="photoUrl"
             id="photoUrl"
@@ -87,6 +138,7 @@ const UpdateJob = () => {
             </span>
             {/* Input */}
             <input
+              defaultValue={jobTitle}
               required
               type="text"
               name="jobTitle"
@@ -134,6 +186,7 @@ const UpdateJob = () => {
             /> */}
             <select
               name="jobCategory"
+              defaultValue={jobCategory}
               id="jobCategory"
               placeholder="Job Category"
               className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-gray-700  text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
@@ -171,6 +224,7 @@ const UpdateJob = () => {
             </span>
             {/* Input */}
             <input
+              defaultValue={salaryRange}
               type="text"
               name="salaryRange"
               id="salaryRange"
@@ -208,6 +262,7 @@ const UpdateJob = () => {
             </span>
             {/* Input */}
             <textarea
+              defaultValue={jobDescription}
               type="text"
               name="jobDescription"
               id="jobDescription"
@@ -243,6 +298,7 @@ const UpdateJob = () => {
             {/* Input */}
 
             <input
+              defaultValue={jobPosting}
               type="date"
               name="jobPostingDate"
               id="jobPostingDate"
@@ -277,7 +333,10 @@ const UpdateJob = () => {
             <span className="absolute bottom-2 left-0 pl-3 inline-flex items-center pointer-events-none">
               {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
             </span>
-            <DateSelector setApplicationDeadline={setApplicationDeadline} />
+            <DatePicker
+              onChange={(data) => setApplicationDeadline(data)}
+              defaultValue={formattedDate}
+            ></DatePicker>
             <span
               className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 ease-in transform ${
                 focused === 8 ? "w-full" : "w-0"
@@ -303,6 +362,7 @@ const UpdateJob = () => {
             </span>
             {/* Input */}
             <input
+              defaultValue={totalApplicants}
               type="number"
               defaultValue={0}
               name="totalApplicants"

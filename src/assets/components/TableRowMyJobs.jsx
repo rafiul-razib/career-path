@@ -1,26 +1,37 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const TableRowMyJobs = ({ job, idx }) => {
+const TableRowMyJobs = ({ job, idx, postedJobs, setPostedJobs }) => {
   const { _id, jobTitle, salaryRange, jobPosting, deadline } = job;
 
-  //   const handleViewDetails = () => {
-  //     Swal.fire({
-  //       title: "Alert!!",
-  //       text: "You need to login to view details!",
-  //       icon: "info",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#3085d6",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Proceed to Login!",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         navigate(`/job/${_id}`);
-  //       }
-  //     });
-  //   };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure??",
+      text: "Operation cannot be reverted!!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3000/myJobs/${id}`).then((res) => {
+          console.log(res.data);
+          const remainingJobs = postedJobs.filter((job) => job._id !== id);
+          setPostedJobs(remainingJobs);
+          Swal.fire({
+            title: "Success!",
+            text: "Deleted Job successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        });
+      }
+    });
+  };
 
-  //   console.log(idx);
+  // console.log(idx);
   return (
     <tr
       className={`${
@@ -75,7 +86,10 @@ const TableRowMyJobs = ({ job, idx }) => {
           </button>
         </Link>
 
-        <button className="group relative inline-flex items-center px-2.5 py-1.5 rounded shadow-lg outline-none bg-red-500 text-sm text-white font-medium transition-all duration-200 ease-out hover:text-pink-500 hover:bg-transparent hover:shadow-none active:top-0.5 focus:outline-none">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="group relative inline-flex items-center px-2.5 py-1.5 rounded shadow-lg outline-none bg-red-500 text-sm text-white font-medium transition-all duration-200 ease-out hover:text-pink-500 hover:bg-transparent hover:shadow-none active:top-0.5 focus:outline-none"
+        >
           {/* span::before */}
           <span
             className="absolute h-0 w-0.5 right-0 top-0 bg-pink-500 transition-all duration-500 ease-out group-hover:h-full"
