@@ -20,7 +20,7 @@ const TableRow = ({ job, idx }) => {
     });
   };
 
-  console.log(idx);
+  // console.log(idx);
   return (
     <tr
       className={`${

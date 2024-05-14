@@ -5,9 +5,16 @@ import { useState } from "react";
 const AllJobsList = () => {
   const data = useLoaderData();
   const [focused, setFocused] = useState(false);
+  const [displayJobs, setDisplayJobs] = useState([...data]);
 
-  const [inputData, setInputData] = useState("");
-  // console.log(inputData);
+  const handleSearch = (e) => {
+    const searchedText = e.target.value;
+    const searchedJob = data.filter((job) =>
+      job.jobTitle.toLowerCase().includes(searchedText.toLowerCase())
+    );
+    setDisplayJobs(searchedJob);
+  };
+
   return (
     <div className="bg-gray-800">
       <div className=" relative overflow-hidden max-w-4xl mx-auto bg-gray-800 text-left text-gray-100">
@@ -28,7 +35,7 @@ const AllJobsList = () => {
         </span>
         {/* Input */}
         <input
-          // onChange={setInputData()}
+          onChange={handleSearch}
           type="text"
           name="search"
           id="search"
@@ -92,7 +99,7 @@ const AllJobsList = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((job, idx) => (
+          {displayJobs.map((job, idx) => (
             <TableRow key={idx} job={job} idx={idx}></TableRow>
           ))}
         </tbody>
