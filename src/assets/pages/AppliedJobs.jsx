@@ -45,70 +45,70 @@ const AppliedJobs = () => {
           <option>Part-Time</option>
         </select>
       </label>
-      <div className="text-2xl font-bold text-gray-800">
-        Here are the Jobs You have Applied For:
-      </div>
-      <table className="w-full">
-        <thead className="min-w-full bg-gray-800 text-left text-gray-100">
-          <tr>
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              SI
-            </th>
-            {/* ::Name */}
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Job Title
-            </th>
-            {/* ::Job Title */}
 
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Job Category
-            </th>
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Salary Range
-            </th>
-            {/* ::Created Date */}
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Deadline
-            </th>
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Applied On
-            </th>
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              User Email
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {displayJobs.map((application, idx) => (
-            <TableRowAppliedJobs
-              key={idx}
-              application={application}
-              idx={idx}
-            ></TableRowAppliedJobs>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="min-w-full bg-gray-800 text-left text-gray-100">
+            <tr>
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                SI
+              </th>
+              {/* ::Name */}
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Job Title
+              </th>
+              {/* ::Job Title */}
+
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Job Category
+              </th>
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Salary Range
+              </th>
+              {/* ::Created Date */}
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Deadline
+              </th>
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Applied On
+              </th>
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                User Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {displayJobs.map((application, idx) => (
+              <TableRowAppliedJobs
+                key={idx}
+                application={application}
+                idx={idx}
+              ></TableRowAppliedJobs>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

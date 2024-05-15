@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import JobCard from "./JobCard";
-import { Link, Outlet } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { ThemeContext } from "../Provider/ThemeProvider";
 
 const HeroTabs = () => {
+  const { theme } = useContext(ThemeContext);
+
   const tabs = [
     { name: "All Jobs", jobCategory: "All jobs", link: "" },
     { name: "On-site Jobs", jobCategory: "On-site Job", link: "onSiteJobs" },
@@ -21,15 +23,14 @@ const HeroTabs = () => {
   }, []);
 
   const [currentTab, setCurrentTab] = useState("All Jobs");
-  // console.log(currentTab);
 
   return (
-    <div className="mt-4">
+    <div
+      className={`mt-4 ${theme === "dark" ? "text-white" : "text-gray-700"}`}
+    >
       <div className="text-center my-12">
-        <h1 className="font-bold text-4xl mb-5 text-gray-600">
-          Our Jobs Categories
-        </h1>
-        <p className="font-semibold text-md max-w-5xl mx-auto text-gray-500">
+        <h1 className="font-bold text-4xl mb-5">Our Jobs Categories</h1>
+        <p className="font-semibold text-md max-w-5xl mx-auto">
           We cater to diverse career aspirations with a comprehensive array of
           job categories. From technology to healthcare, finance to creative
           arts, explore opportunities tailored to your expertise and interests.
@@ -41,6 +42,7 @@ const HeroTabs = () => {
           <label htmlFor="current-tab" className="sr-only">
             Select a tab
           </label>
+
           <select
             name="current-tab"
             id="current-tab"
@@ -51,9 +53,9 @@ const HeroTabs = () => {
               <option
                 key={tab.name}
                 value={tab.name}
-                onClick={() => setCurrentTab(tab.jobCategory)}
+                onClick={() => setCurrentTab(tab.name)}
               >
-                {tab.name}
+                <Link to={tab.link}>{tab.name}</Link>
               </option>
             ))}
           </select>
@@ -88,7 +90,9 @@ const HeroTabs = () => {
           </nav>
         </div>
       </div>
-      <Outlet></Outlet>
+      <div className="max-w-6xl mx-auto">
+        <Outlet></Outlet>
+      </div>
       {/* <div className="max-w-6xl mx-auto my-6 grid grid-cols-3 gap-6">
         {jobs.map((item, idx) => (
           <JobCard key={idx} item={item} />

@@ -16,8 +16,8 @@ const AllJobsList = () => {
   };
 
   return (
-    <div className="bg-gray-800">
-      <div className=" relative overflow-hidden max-w-4xl mx-auto bg-gray-800 text-left text-gray-100">
+    <div className="bg-gray-800 overflow-x-auto">
+      <div className=" relative  max-w-4xl mx-auto bg-gray-800 text-left text-gray-100">
         {/* Label */}
         <label
           htmlFor="photoUrl"

@@ -1,6 +1,16 @@
+import { useContext } from "react";
+import { ThemeContext } from "../Provider/ThemeProvider";
+
 const Footer = () => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <footer className="w-full py-5 sm:py-10 px-4 bg-gray-800">
+    <footer
+      className={`w-full py-5 sm:py-10 px-4 ${
+        theme === "light"
+          ? "bg-gray-300 text-gray-700"
+          : "bg-gray-800 text-white"
+      }`}
+    >
       {" "}
       {/* Container */}
       <h2 className="sr-only">Footer</h2>
@@ -8,15 +18,34 @@ const Footer = () => {
         {/* :SITE NAME & SOCIAL NETWORKS */}
         <div className="relative mt-14 sm:mt-0 px-5 flex flex-col justify-center items-center text-gray-500">
           {/* ::Site name */}
-          <h1 className="font-title text-4xl text-center font-semibold mt-auto">
-            Fancy Footer 1
-          </h1>
+          <div className="flex flex-col justify-end">
+            {theme === "dark" ? (
+              <img
+                src="/src/assets/career-path-drk-removebg-preview.png"
+                alt=""
+                srcset=""
+              />
+            ) : (
+              <img
+                src="/src/assets/CareerPath-removebg-preview.png"
+                alt=""
+                srcset=""
+              />
+            )}
+          </div>
           {/* ::Social & copyright */}
           <div className="mt-auto flex flex-col items-center">
             {/* :::Social */}
             <span className="inline-flex mt-6 w-full justify-center md:justify-start md:w-auto">
               {/* Facebook */}
-              <a href="#link" className="text-gray-200">
+              <a
+                href="#link"
+                className={` ${
+                  theme === "light"
+                    ? "bg-gray-300 text-gray-700"
+                    : "bg-gray-800 text-white"
+                }`}
+              >
                 <span className="sr-only">Facebook</span>
                 <svg
                   fill="currentColor"
@@ -30,7 +59,14 @@ const Footer = () => {
                 </svg>
               </a>
               {/* Twitter */}
-              <a href="#link" className="ml-3 text-gray-200">
+              <a
+                href="#link"
+                className={`ml-3  ${
+                  theme === "light"
+                    ? "bg-gray-300 text-gray-700"
+                    : "bg-gray-800 text-white"
+                }`}
+              >
                 <span className="sr-only">Twitter</span>
                 <svg
                   fill="currentColor"
@@ -44,7 +80,14 @@ const Footer = () => {
                 </svg>
               </a>
               {/* Instagram */}
-              <a href="#link" className="ml-3 text-gray-200">
+              <a
+                href="#link"
+                className={`ml-3  ${
+                  theme === "light"
+                    ? "bg-gray-300 text-gray-700"
+                    : "bg-gray-800 text-white"
+                }`}
+              >
                 <span className="sr-only">Instagram</span>
                 <svg
                   fill="none"
@@ -60,7 +103,14 @@ const Footer = () => {
                 </svg>
               </a>
               {/* Linkedin */}
-              <a href="#link" className="ml-3 text-gray-200">
+              <a
+                href="#link"
+                className={`ml-3  ${
+                  theme === "light"
+                    ? "bg-gray-300 text-gray-700"
+                    : "bg-gray-800 text-white"
+                }`}
+              >
                 <span className="sr-only">Linkedin</span>
                 <svg
                   fill="currentColor"
@@ -81,7 +131,7 @@ const Footer = () => {
             </span>
             {/* :::Copyright */}
             <span className="py-4 text-xs">
-              &copy;2021, Fancy Tailwind All Rights Reserved.
+              &copy;2021, Career Path, All Rights Reserved.
             </span>
           </div>
           {/* ::Mobile separator line */}
@@ -145,7 +195,7 @@ const Footer = () => {
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
-              <a href="#email">fancytailwind@paradise.com</a>
+              <a href="#email">careerpath@paradise.com</a>
             </p>
           </div>
           {/* ::Phone */}

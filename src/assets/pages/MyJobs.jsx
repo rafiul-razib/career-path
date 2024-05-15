@@ -18,64 +18,66 @@ const MyJobs = () => {
       <div className="text-2xl font-bold text-gray-800">
         Here are the Jobs added by you
       </div>
-      <table className="w-full">
-        <thead className="min-w-full bg-gray-800 text-left text-gray-100">
-          <tr>
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              SI
-            </th>
-            {/* ::Name */}
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Job Title
-            </th>
-            {/* ::Job Title */}
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Job Posted On
-            </th>
-            {/* ::Email */}
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Deadline
-            </th>
-            {/* ::Created Date */}
-            <th
-              className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Salary
-            </th>
-            {/* ::Actions */}
-            <th
-              className="py-3 px-4 text-center text-sm font-medium uppercase tracking-wide"
-              scope="col"
-            >
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {postedJobs.map((job, idx) => (
-            <TableRowMyJobs
-              postedJobs={postedJobs}
-              setPostedJobs={setPostedJobs}
-              key={idx}
-              job={job}
-              idx={idx}
-            ></TableRowMyJobs>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="min-w-full bg-gray-800 text-left text-gray-100">
+            <tr>
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                SI
+              </th>
+              {/* ::Name */}
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Job Title
+              </th>
+              {/* ::Job Title */}
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Job Posted On
+              </th>
+              {/* ::Email */}
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Deadline
+              </th>
+              {/* ::Created Date */}
+              <th
+                className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Salary
+              </th>
+              {/* ::Actions */}
+              <th
+                className="py-3 px-4 text-center text-sm font-medium uppercase tracking-wide"
+                scope="col"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {postedJobs.map((job, idx) => (
+              <TableRowMyJobs
+                postedJobs={postedJobs}
+                setPostedJobs={setPostedJobs}
+                key={idx}
+                job={job}
+                idx={idx}
+              ></TableRowMyJobs>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

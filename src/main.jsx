@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -21,6 +21,7 @@ import PrivateRoute from "./assets/firebase/PrivateRoute.jsx";
 import UpdateJob from "./assets/pages/UpdateJob.jsx";
 import AppliedJobs from "./assets/pages/AppliedJobs.jsx";
 import Blogs from "./assets/pages/Blogs.jsx";
+import ThemeProvider from "./assets/Provider/ThemeProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -123,7 +124,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
