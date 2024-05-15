@@ -20,6 +20,7 @@ import AuthProvider from "./assets/firebase/AuthProvider.jsx";
 import PrivateRoute from "./assets/firebase/PrivateRoute.jsx";
 import UpdateJob from "./assets/pages/UpdateJob.jsx";
 import AppliedJobs from "./assets/pages/AppliedJobs.jsx";
+import Blogs from "./assets/pages/Blogs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
             <AddJob />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
     ],
   },
