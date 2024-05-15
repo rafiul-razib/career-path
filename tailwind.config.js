@@ -17,6 +17,6 @@ export default {
     },
     
   },
-  plugins: [require("tailwindcss-named-groups"), require('@tailwindcss/forms'),],
+  plugins: [require("tailwindcss-named-groups"), require('@tailwindcss/forms'), require("daisyui")],
 }
 

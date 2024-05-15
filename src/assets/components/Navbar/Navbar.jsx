@@ -16,7 +16,7 @@ const Navbar = () => {
 
       {user && (
         <>
-          <NavLink className={"mr-8"} to={"/appliedJobs"}>
+          <NavLink className={"mr-8"} to={"/appliedJob"}>
             Applied Jobs
           </NavLink>
 

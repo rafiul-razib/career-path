@@ -2,11 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  useParams,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./assets/Root.jsx";
 import Login from "./assets/pages/Login.jsx";
 import NotFound from "./assets/pages/NotFound.jsx";
@@ -23,6 +19,7 @@ import AllJobsList from "./assets/pages/AllJobsList.jsx";
 import AuthProvider from "./assets/firebase/AuthProvider.jsx";
 import PrivateRoute from "./assets/firebase/PrivateRoute.jsx";
 import UpdateJob from "./assets/pages/UpdateJob.jsx";
+import AppliedJobs from "./assets/pages/AppliedJobs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -86,8 +83,20 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/appliedJob",
+        element: (
+          <PrivateRoute>
+            <AppliedJobs />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/updateJob/:id",
-        element: <UpdateJob />,
+        element: (
+          <PrivateRoute>
+            <UpdateJob />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => fetch(`http://localhost:3000/job/${params.id}`),
       },
       {
@@ -96,7 +105,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addJob",
-        element: <AddJob />,
+        element: (
+          <PrivateRoute>
+            <AddJob />
+          </PrivateRoute>
+        ),
       },
     ],
   },

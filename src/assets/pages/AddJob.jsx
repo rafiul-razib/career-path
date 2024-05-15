@@ -15,7 +15,7 @@ const AddJob = () => {
     const form = e.target;
     const photoUrl = form.photoUrl.value;
     const jobTitle = form.jobTitle.value;
-    const user = form.user.value;
+    const postedBy = form.user.value;
     const jobCategory = form.jobCategory.value;
     const salaryRange = form.salaryRange.value;
     const jobDescription = form.jobDescription.value;
@@ -26,7 +26,7 @@ const AddJob = () => {
     const newJob = {
       photoUrl,
       jobTitle,
-      user,
+      postedBy,
       jobCategory,
       salaryRange,
       jobDescription,
