@@ -1,8 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import JobCard from "./JobCard";
+import useAllJobsData from "../Hooks/useAllJobsData";
 
 const AllJobs = () => {
   const jobs = useLoaderData();
+  // const allJobs = useAllJobsData();
+  // console.log(allJobs);
+  console.log(jobs);
 
   return (
     <div>

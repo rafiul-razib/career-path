@@ -177,13 +177,13 @@ const Footer = () => {
               Address
             </h3>
             <p className="md:w-48 text-center sm:text-left text-lg md:text-xl font-medium">
-              101 Paradise Road, 97460 Fancy Island REUNION
+              101 Paradise Road, 97460 BerMuda.
             </p>
           </div>
           {/* ::Email */}
           <div className="col-span-2 md:col-span-1 pb-0 md:py-3 px-4 flex flex-col items-center sm:items-start">
             <h3 className="py-1.5 md:py-4 text-xl text-gray-500 font-bold tracking-wide">
-              Fancy Company
+              Job Seeker's FIrst Choice
             </h3>
             <p className="inline-flex justify-center sm:justify-start text-sm text-gray-400 font-medium">
               <svg

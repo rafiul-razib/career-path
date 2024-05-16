@@ -31,11 +31,21 @@ const JobDetails = () => {
     const candidate = { name, email, resumeLink, job, appliedOn };
     // console.log(email);
 
-    if (job.user !== email) {
+    if (job.user !== user.email) {
       if (appliedOn < applicationDeadline) {
         axios
           .post(`http://localhost:3000/appliedJob/${_id}`, candidate)
-          .then((res) => console.log(res.data));
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.insertedId) {
+              Swal.fire({
+                title: "Success!",
+                text: "Application Submitted!!",
+                icon: "success",
+                confirmButtonText: "Go back",
+              });
+            }
+          });
       } else {
         Swal.fire({
           title: "Error!",

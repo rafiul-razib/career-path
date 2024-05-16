@@ -10,8 +10,10 @@ const MyJobs = () => {
   const url = `http://localhost:3000/myJobs?email=${user?.email}`;
 
   useEffect(() => {
-    axios.get(url).then((res) => setPostedJobs(res.data));
-  }, [user]);
+    axios
+      .get(url, { withCredentials: true })
+      .then((res) => setPostedJobs(res.data));
+  }, [url]);
 
   return (
     <div>

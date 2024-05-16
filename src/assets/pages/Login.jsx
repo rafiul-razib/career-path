@@ -3,6 +3,7 @@ import { AuthContext } from "../firebase/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
   const [isForm, setIsForm] = useState({
@@ -33,6 +34,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Cool",
         });
+
         console.log(result.user);
       })
       .catch((error) => {
@@ -40,7 +42,7 @@ const Login = () => {
       });
     navigate(location?.state ? location.state : "/");
   };
-  console.log(user);
+  // console.log(user);
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -49,13 +51,19 @@ const Login = () => {
     console.log(email, password);
     signIn(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           title: "Success!",
           text: "User Logged in successfully",
           icon: "success",
           confirmButtonText: "Cool",
         });
+        // const loggedInUser = result.user;
+        // console.log(loggedInUser);
+        // const user = { email };
+        // axios
+        //   .post("http://localhost:3000/jwt", user, { withCredentials: true })
+        //   .then((res) => console.log(res.data));
         form.reset();
         navigate(location?.state ? location.state : "/");
       })

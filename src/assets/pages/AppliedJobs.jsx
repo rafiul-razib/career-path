@@ -8,16 +8,19 @@ const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
   const [myAppliedJobs, setMyAppliedJobs] = useState([]);
   const url = `http://localhost:3000/appliedJob?email=${user?.email}`;
+  // console.log(myAppliedJobs);
 
   useEffect(() => {
-    axios.get(url).then((res) => {
-      setMyAppliedJobs(res.data);
-    });
-  }, [user]);
+    axios
+      .get(url, { withCredentials: true })
+      .then((res) => setMyAppliedJobs(res.data));
+  }, [url]);
 
   // console.log(myAppliedJobs);
 
   const [displayJobs, setDisplayJobs] = useState([...myAppliedJobs]);
+
+  // console.log(displayJobs);
 
   const handleSearch = (e) => {
     const searchedText = e.target.value;
