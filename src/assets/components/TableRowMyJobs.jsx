@@ -16,17 +16,19 @@ const TableRowMyJobs = ({ job, idx, postedJobs, setPostedJobs }) => {
       confirmButtonText: "Delete!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/myJobs/${id}`).then((res) => {
-          console.log(res.data);
-          const remainingJobs = postedJobs.filter((job) => job._id !== id);
-          setPostedJobs(remainingJobs);
-          Swal.fire({
-            title: "Success!",
-            text: "Deleted Job successfully",
-            icon: "success",
-            confirmButtonText: "Cool",
+        axios
+          .delete(`https://career-path-server.vercel.app/myJobs/${id}`)
+          .then((res) => {
+            console.log(res.data);
+            const remainingJobs = postedJobs.filter((job) => job._id !== id);
+            setPostedJobs(remainingJobs);
+            Swal.fire({
+              title: "Success!",
+              text: "Deleted Job successfully",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
           });
-        });
       }
     });
   };

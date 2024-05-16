@@ -17,7 +17,7 @@ const HeroTabs = () => {
   // const [selectedJobs, setSelectedJobs] = useState(jobs);
 
   useEffect(() => {
-    fetch("http://localhost:3000/allJobs")
+    fetch("https://career-path-server.vercel.app/allJobs")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);

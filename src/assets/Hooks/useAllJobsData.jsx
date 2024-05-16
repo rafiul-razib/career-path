@@ -5,7 +5,7 @@ const useAllJobsData = () => {
   const [allJobs, setAllJobs] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:3000/allJobs")
+      .get("https://career-path-server.vercel.app/allJobs")
       .then((res) => setAllJobs(res.data));
   }, []);
   return allJobs;

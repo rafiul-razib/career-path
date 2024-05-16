@@ -34,17 +34,19 @@ const AddJob = () => {
       deadline,
       totalApplicants,
     };
-    axios.post("http://localhost:3000/addJob", newJob).then((result) => {
-      if (result.data.insertedId) {
-        Swal.fire({
-          title: "Success!",
-          text: "Job Posted Successfully!!",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-      }
-      console.log(result.data);
-    });
+    axios
+      .post("https://career-path-server.vercel.app/addJob", newJob)
+      .then((result) => {
+        if (result.data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Job Posted Successfully!!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+        console.log(result.data);
+      });
   };
   return (
     <div className="w-full flex flex-wrap justify-center items-center bg-gray-800">

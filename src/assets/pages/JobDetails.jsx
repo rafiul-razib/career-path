@@ -34,7 +34,10 @@ const JobDetails = () => {
     if (job.user !== user.email) {
       if (appliedOn < applicationDeadline) {
         axios
-          .post(`http://localhost:3000/appliedJob/${_id}`, candidate)
+          .post(
+            `https://career-path-server.vercel.app/appliedJob/${_id}`,
+            candidate
+          )
           .then((res) => {
             console.log(res.data);
             if (res.data.insertedId) {

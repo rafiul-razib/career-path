@@ -62,7 +62,7 @@ const Login = () => {
         // console.log(loggedInUser);
         // const user = { email };
         // axios
-        //   .post("http://localhost:3000/jwt", user, { withCredentials: true })
+        //   .post("https://career-path-server.vercel.app/jwt", user, { withCredentials: true })
         //   .then((res) => console.log(res.data));
         form.reset();
         navigate(location?.state ? location.state : "/");

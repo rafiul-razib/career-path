@@ -36,28 +36,33 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <AllJobs></AllJobs>,
-            loader: () => fetch("http://localhost:3000/allJobs"),
+            loader: () =>
+              fetch("https://career-path-server.vercel.app/allJobs"),
           },
 
           {
             path: "remoteJobs",
             element: <RemoteJobs></RemoteJobs>,
-            loader: () => fetch("http://localhost:3000/remoteJobs"),
+            loader: () =>
+              fetch("https://career-path-server.vercel.app/remoteJobs"),
           },
           {
             path: "onSiteJobs",
             element: <OnSiteJobs></OnSiteJobs>,
-            loader: () => fetch("http://localhost:3000/onSiteJobs"),
+            loader: () =>
+              fetch("https://career-path-server.vercel.app/onSiteJobs"),
           },
           {
             path: "hybridJobs",
             element: <HybridJobs></HybridJobs>,
-            loader: () => fetch("http://localhost:3000/hybridJobs"),
+            loader: () =>
+              fetch("https://career-path-server.vercel.app/hybridJobs"),
           },
           {
             path: "partTimeJobs",
             element: <PartTimeJobs></PartTimeJobs>,
-            loader: () => fetch("http://localhost:3000/partTimeJobs"),
+            loader: () =>
+              fetch("https://career-path-server.vercel.app/partTimeJobs"),
           },
         ],
       },
@@ -69,12 +74,13 @@ const router = createBrowserRouter([
             <JobDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/job/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://career-path-server.vercel.app/job/${params.id}`),
       },
       {
         path: "allListedJobs",
         element: <AllJobsList />,
-        loader: () => fetch("http://localhost:3000/allJobs"),
+        loader: () => fetch("https://career-path-server.vercel.app/allJobs"),
       },
       {
         path: "/myJobs",
@@ -99,7 +105,8 @@ const router = createBrowserRouter([
             <UpdateJob />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/job/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://career-path-server.vercel.app/job/${params.id}`),
       },
       {
         path: "/login",

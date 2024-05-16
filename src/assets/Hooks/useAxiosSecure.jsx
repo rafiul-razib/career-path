@@ -4,7 +4,7 @@ import { AuthContext } from "../firebase/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.creat({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://career-path-server.vercel.app",
   withCredentials: true,
 });
 

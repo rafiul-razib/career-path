@@ -7,7 +7,7 @@ import TableRowMyJobs from "../components/TableRowMyJobs";
 const MyJobs = () => {
   const [postedJobs, setPostedJobs] = useState([]);
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:3000/myJobs?email=${user?.email}`;
+  const url = `https://career-path-server.vercel.app/myJobs?email=${user?.email}`;
 
   useEffect(() => {
     axios

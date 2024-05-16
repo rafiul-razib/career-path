@@ -12,7 +12,7 @@ const UpdateJob = () => {
   const formattedDeadline =
     applicationDeadline &&
     moment(new Date(applicationDeadline.$d)).format("YYYY-MM-D");
-  console.log(formattedDeadline);
+  // console.log(formattedDeadline);
 
   const job = useLoaderData();
 
@@ -66,9 +66,9 @@ const UpdateJob = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .patch(`http://localhost:3000/job/${_id}`, updatedJob)
+          .patch(`https://career-path-server.vercel.app/job/${_id}`, updatedJob)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             Swal.fire({
               title: "Success!",
               text: "Updated Job successfully",
