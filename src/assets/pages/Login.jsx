@@ -35,7 +35,7 @@ const Login = () => {
           confirmButtonText: "Cool",
         });
 
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -74,7 +74,7 @@ const Login = () => {
           icon: "error",
           confirmButtonText: "Try again",
         });
-        console.log(error);
+        // console.log(error);
       });
   };
   const handleSubmitSignUp = (e) => {
@@ -100,7 +100,7 @@ const Login = () => {
           form.reset();
         });
         navigate(location?.state ? location.state : "/");
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         Swal.fire({

@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
       const loggedUser = { email: userEmail };
       setUser(currentUser);
       setIsLoading(false);
-      console.log(loggedUser);
+      // console.log(loggedUser);
       // It user exists issue a token
       if (currentUser) {
         axios

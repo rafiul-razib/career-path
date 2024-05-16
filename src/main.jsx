@@ -22,6 +22,7 @@ import UpdateJob from "./assets/pages/UpdateJob.jsx";
 import AppliedJobs from "./assets/pages/AppliedJobs.jsx";
 import Blogs from "./assets/pages/Blogs.jsx";
 import ThemeProvider from "./assets/Provider/ThemeProvider.jsx";
+import UserProfile from "./assets/pages/UserProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/profile",
+        element: <UserProfile />,
       },
     ],
   },
