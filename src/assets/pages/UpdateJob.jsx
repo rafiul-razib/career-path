@@ -43,6 +43,8 @@ const UpdateJob = () => {
     const jobPosting = form.jobPostingDate.value;
     const deadline = formattedDeadline;
     const totalApplicants = form.totalApplicants.value;
+    const totalApplicantsNumber = parseInt(totalApplicants);
+    console.log(totalApplicants, totalApplicantsNumber);
 
     const updatedJob = {
       photoUrl,
@@ -52,7 +54,7 @@ const UpdateJob = () => {
       jobDescription,
       jobPosting,
       deadline,
-      totalApplicants,
+      totalApplicantsNumber,
     };
 
     Swal.fire({
@@ -66,15 +68,30 @@ const UpdateJob = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .patch(`https://career-path-server.vercel.app/job/${_id}`, updatedJob)
+          .put(
+            `https://career-path-server.vercel.app/updateJob/${_id}`,
+            updatedJob,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
-            // console.log(res.data);
-            Swal.fire({
-              title: "Success!",
-              text: "Updated Job successfully",
-              icon: "success",
-              confirmButtonText: "Cool",
-            });
+            console.log(res.data);
+            if (res.data.modifiedCount) {
+              Swal.fire({
+                title: "Success!",
+                text: "Updated Job successfully",
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Could Not Update!!",
+                icon: "error",
+                confirmButtonText: "Cool",
+              });
+            }
           });
       }
     });

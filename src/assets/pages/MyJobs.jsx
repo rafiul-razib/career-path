@@ -15,6 +15,8 @@ const MyJobs = () => {
       .then((res) => setPostedJobs(res.data));
   }, [url]);
 
+  console.log(postedJobs);
+
   return (
     <div>
       <div className="text-2xl font-bold text-gray-800">
