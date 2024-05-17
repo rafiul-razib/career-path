@@ -68,7 +68,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header
-      className={`w-full ${
+      className={`w-full px-4 lg:px-0 ${
         theme === "dark" ? "bg-gray-800" : "bg-gray-300"
       } text-gray-100 body-font shadow-sm`}
     >

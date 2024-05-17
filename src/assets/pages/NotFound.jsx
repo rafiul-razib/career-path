@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import humaans from "../../assets/footer.png";
 
 const NotFound = () => {
   return (
@@ -12,6 +13,9 @@ const NotFound = () => {
           <p className="text-7xl md:text-10xl text-gray-700 font-extrabold tracking-wider">
             404
           </p>
+          <div>
+            <img src={humaans} alt="" srcset="" />
+          </div>
         </div>
 
         {/* :TEXT CONTAINER */}

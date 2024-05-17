@@ -53,7 +53,9 @@ const HeroTabs = () => {
               <option
                 key={tab.name}
                 value={tab.name}
-                onClick={() => setCurrentTab(tab.name)}
+                onClick={() =>
+                  setCurrentTab(<Link to={tab.link}>{tab.name}</Link>)
+                }
               >
                 <Link to={tab.link}>{tab.name}</Link>
               </option>
