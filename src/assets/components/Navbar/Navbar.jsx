@@ -81,14 +81,14 @@ const Navbar = () => {
         >
           {theme === "dark" ? (
             <img
-              className="w-1/2 lg:w-2/3"
-              src="/src/assets/career-path-drk-removebg-preview.png"
+              className="w-2/3"
+              src="https://i.ibb.co/mC4jFT3/darkSign.png"
               alt=""
             />
           ) : (
             <img
-              className="w-1/2 lg:w-2/3"
-              src="/src/assets/CareerPath-removebg-preview.png"
+              className="w-2/3"
+              src="https://i.ibb.co/HFy6xHn/light-Sign.png"
               alt=""
             />
           )}

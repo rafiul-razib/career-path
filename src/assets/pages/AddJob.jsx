@@ -49,7 +49,7 @@ const AddJob = () => {
       });
   };
   return (
-    <div className="w-full flex flex-wrap justify-center items-center bg-gray-800">
+    <div className="w-full flex flex-wrap justify-center items-center bg-gray-800 py-8">
       <form onSubmit={handleAddJob}>
         <div className="my-5 relative overflow-hidden">
           {/* Label */}

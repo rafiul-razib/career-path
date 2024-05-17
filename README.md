@@ -8,3 +8,4 @@ Career Path is a Full-Stack Website build on React Js. Following Technologies us
 4. Firebase Authentication
 5. Express Js
 6. MongoDb
+7. Secured 2 api (Applied Jobs and My Jobs) through JWT Token

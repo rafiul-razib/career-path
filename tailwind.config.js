@@ -14,6 +14,7 @@ export default {
       },
       padding: ['hover'],
       scale: ['group-hover'],
+      // inset: ['active']
     },
     
   },

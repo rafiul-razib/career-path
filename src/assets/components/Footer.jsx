@@ -21,13 +21,13 @@ const Footer = () => {
           <div className="flex flex-col justify-end">
             {theme === "dark" ? (
               <img
-                src="/src/assets/career-path-drk-removebg-preview.png"
+                src="https://i.ibb.co/mC4jFT3/darkSign.png"
                 alt=""
                 srcset=""
               />
             ) : (
               <img
-                src="/src/assets/CareerPath-removebg-preview.png"
+                src="https://i.ibb.co/HFy6xHn/light-Sign.png"
                 alt=""
                 srcset=""
               />

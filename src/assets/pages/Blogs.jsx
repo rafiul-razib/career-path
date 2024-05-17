@@ -124,6 +124,9 @@ const Blogs = () => {
                 <li>Firebase Authentication</li>
                 <li>Express Js</li>
                 <li>MongoDb</li>
+                <li>
+                  Secured 2 api (Applied Jobs and My Jobs) through JWT Token
+                </li>
               </ol>
             </p>
           </div>

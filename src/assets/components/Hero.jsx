@@ -3,7 +3,7 @@ const Hero = () => {
     <div className="relative w-full h-full flex justify-end bg-gradient-to-t from-black via-transparent to-black overflow-hidden">
       {/* :HERO IMAGE */}
       <img
-        src="https://fancytailwind.com/static/f9e0992b36915d2ecac18949d7ba0fdf/24862/walking1.webp"
+        src="https://i.ibb.co/bR3BRxh/3.jpg"
         alt=""
         className="absolute w-full h-full object-cover object-left sm:object-center opacity-70"
       />

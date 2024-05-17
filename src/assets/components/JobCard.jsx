@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../firebase/AuthProvider";
 import { ThemeContext } from "../Provider/ThemeProvider";
+import { motion, transform } from "framer-motion";
 
 const JobCard = ({ item }) => {
   const { user } = useContext(AuthContext);
@@ -40,8 +41,10 @@ const JobCard = ({ item }) => {
   };
 
   return (
-    <div
-      className={`col-span-1 group relative p-2 pb-5 flex flex-col items-center border-2 border-transparent rounded-xl ${
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      transition={{ duration: 0.5 }}
+      className={`col-span-1 group relative p-2 pb-5 flex flex-col items-center border-0 border-transparent rounded-xl ${
         theme === "dark" ? "bg-gray-500" : "bg-white"
       } bg-opacity-30 backdrop-filter backdrop-blur-sm hover:shadow-xl hover:border-gray-500 shadow-xl`}
     >
@@ -60,6 +63,7 @@ const JobCard = ({ item }) => {
       <div className="mt-2 px-2 w-full flex flex-col space-y-1">
         {/* :::name */}
         <h1
+          transition={{ ease: "easeIn", duration: 3, delay: 0.5 }}
           className={`text-xl ${
             theme === "dark" ? "text-white" : "text-gray-800"
           } text-gray-800 font-bold`}
@@ -124,7 +128,7 @@ const JobCard = ({ item }) => {
           </button>
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

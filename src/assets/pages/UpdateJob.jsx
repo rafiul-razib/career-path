@@ -80,7 +80,7 @@ const UpdateJob = () => {
     });
   };
   return (
-    <div className="w-full flex flex-wrap justify-center items-center bg-gray-800">
+    <div className="w-full flex flex-wrap justify-center items-center bg-gray-800 py-8">
       <form onSubmit={handleUpdateJob}>
         <div className="my-5 relative overflow-hidden">
           {/* Label */}
@@ -154,6 +154,45 @@ const UpdateJob = () => {
               }`}
               aria-hidden="true"
             />
+          </div>
+          <div className="text-white">
+            {" "}
+            <div className="my-5 relative overflow-hidden">
+              {/* Label */}
+              <label
+                htmlFor="applicantsNumber"
+                className={`bg-gradient-to-r bg-clip-text text-xs text-transparent font-semibold uppercase transition-all duration-300 ${
+                  focused === 9
+                    ? "from-green-400 to-blue-400"
+                    : "from-gray-500 to-gray-500"
+                }`}
+              >
+                Total Applicants
+              </label>
+              {/* Icon */}
+              <span className="absolute bottom-2 left-0 pl-3 inline-flex items-center pointer-events-none">
+                {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
+              </span>
+              {/* Input */}
+              <input
+                defaultValue={totalApplicants}
+                type="number"
+                defaultValue={0}
+                name="totalApplicants"
+                id="totalApplicants"
+                placeholder="Total Applicants"
+                className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
+                onFocus={() => setFocused(9)}
+                onBlur={() => setFocused(null)}
+              />
+              {/* Border bottom effect */}
+              <span
+                className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 ease-in transform ${
+                  focused === 9 ? "w-full" : "w-0"
+                }`}
+                aria-hidden="true"
+              />
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -315,69 +354,14 @@ const UpdateJob = () => {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="my-5 relative overflow-hidden">
+        <div className="grid grid-cols-1 gap-4">
+          <div className="my-5 text-white mx-auto">
             {/* Label */}
-            <label
-              htmlFor="applicationDeadline"
-              className={`bg-gradient-to-r bg-clip-text text-xs text-transparent font-semibold uppercase transition-all duration-300 ${
-                focused === 8
-                  ? "from-green-400 to-blue-400"
-                  : "from-gray-500 to-gray-500"
-              }`}
-            >
-              Application Deadline
-            </label>
-            {/* Icon */}
-            <span className="absolute bottom-2 left-0 pl-3 inline-flex items-center pointer-events-none">
-              {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
-            </span>
+            Application Deadline :{" "}
             <DatePicker
               onChange={(data) => setApplicationDeadline(data)}
               defaultValue={formattedDate}
             ></DatePicker>
-            <span
-              className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 ease-in transform ${
-                focused === 8 ? "w-full" : "w-0"
-              }`}
-              aria-hidden="true"
-            />
-          </div>
-          <div className="my-5 relative overflow-hidden">
-            {/* Label */}
-            <label
-              htmlFor="applicantsNumber"
-              className={`bg-gradient-to-r bg-clip-text text-xs text-transparent font-semibold uppercase transition-all duration-300 ${
-                focused === 9
-                  ? "from-green-400 to-blue-400"
-                  : "from-gray-500 to-gray-500"
-              }`}
-            >
-              Total Applicants
-            </label>
-            {/* Icon */}
-            <span className="absolute bottom-2 left-0 pl-3 inline-flex items-center pointer-events-none">
-              {/* <SearchIcon className="h-6 w-6 text-gray-400" aria-hidden="true" /> */}
-            </span>
-            {/* Input */}
-            <input
-              defaultValue={totalApplicants}
-              type="number"
-              defaultValue={0}
-              name="totalApplicants"
-              id="totalApplicants"
-              placeholder="Total Applicants"
-              className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
-              onFocus={() => setFocused(9)}
-              onBlur={() => setFocused(null)}
-            />
-            {/* Border bottom effect */}
-            <span
-              className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 ease-in transform ${
-                focused === 9 ? "w-full" : "w-0"
-              }`}
-              aria-hidden="true"
-            />
           </div>
         </div>
         <div>
