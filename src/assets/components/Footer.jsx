@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../Provider/ThemeProvider";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
@@ -150,24 +151,16 @@ const Footer = () => {
             </h3>
             <nav className="flex justify-around md:flex-col font-medium list-none">
               <li>
-                <a href="#link" className="hover:text-gray-200">
-                  Home
-                </a>
+                <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <a href="#link" className="hover:text-gray-200">
-                  Solutions
-                </a>
+                <Link to={"/allListedJobs"}>All Jobs</Link>
               </li>
               <li>
-                <a href="#link" className="hover:text-gray-200">
-                  Pricing
-                </a>
+                <Link to={"/blogs"}>Blogs</Link>
               </li>
               <li>
-                <a href="#link" className="hover:text-gray-200">
-                  About
-                </a>
+                <Link to={"/login"}>Login</Link>
               </li>
             </nav>
           </div>
