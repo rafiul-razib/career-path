@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import TableRow from "../components/TableRow";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../Provider/ThemeProvider";
 
 const AllJobsList = () => {
   const data = useLoaderData();
   const [focused, setFocused] = useState(false);
+  const { theme } = useContext(ThemeContext);
   const [displayJobs, setDisplayJobs] = useState([...data]);
 
   const handleSearch = (e) => {
@@ -12,12 +14,13 @@ const AllJobsList = () => {
     const searchedJob = data.filter((job) =>
       job.jobTitle.toLowerCase().includes(searchedText.toLowerCase())
     );
+
     setDisplayJobs(searchedJob);
   };
 
   return (
     <div className="bg-gray-800 overflow-x-auto">
-      <div className=" relative  max-w-4xl mx-auto bg-gray-800 text-left text-gray-100">
+      <div className={`relative  max-w-4xl mx-auto  bg-gray-800`}>
         {/* Label */}
         <label
           htmlFor="photoUrl"
@@ -40,7 +43,7 @@ const AllJobsList = () => {
           name="search"
           id="search"
           placeholder="Enter Job name here"
-          className="form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
+          className="mb-5 form-input pl-11 w-full border-0 border-b-2 border-gray-500 bg-white bg-opacity-20 text-white placeholder-gray-400 focus:border-gray-500 focus:ring-0"
           onFocus={() => setFocused(1)}
           onBlur={() => setFocused(null)}
         />
@@ -53,7 +56,13 @@ const AllJobsList = () => {
         />
       </div>
       <table className="w-full">
-        <thead className="min-w-full bg-gray-800 text-left text-gray-100">
+        <thead
+          className={`min-w-full bg-gray-800 text-left ${
+            theme === "dark"
+              ? "bg-gray-800 text-left text-gray-100"
+              : "text-gray-800 text-left bg-gray-100"
+          }`}
+        >
           <tr>
             <th
               className="py-3 px-4 text-sm font-medium uppercase tracking-wide"

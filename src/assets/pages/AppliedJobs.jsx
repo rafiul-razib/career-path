@@ -1,11 +1,13 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
+import { ThemeContext } from "../Provider/ThemeProvider";
 import axios from "axios";
 import TableRowAppliedJobs from "../components/TableRowAppliedJobs";
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
   const [myAppliedJobs, setMyAppliedJobs] = useState([]);
   const url = `https://career-path-server.vercel.app/appliedJob?email=${user?.email}`;
   // console.log(myAppliedJobs);
@@ -28,20 +30,23 @@ const AppliedJobs = () => {
     const searchedJob = myAppliedJobs.filter(
       (job) => job.job.jobCategory.toLowerCase() == searchedText.toLowerCase()
     );
-    // console.log(searchedJob);
-    setDisplayJobs(searchedJob);
-    // console.log(displayJobs);
+
+    if (searchedText === "All Jobs") {
+      setDisplayJobs(myAppliedJobs);
+    } else {
+      setDisplayJobs(searchedJob);
+    }
   };
   return (
     <div>
       <label className="form-control w-full max-w-xs">
         <div className="label">
-          <span className="label-text">Pick the Job Category you want</span>
+          <span className="label-text text-md font-bold">
+            Pick the Job Category you want
+          </span>
         </div>
-        <select onChange={handleSearch} className="select select-bordered">
-          <option disabled selected>
-            Pick one
-          </option>
+        <select onChange={handleSearch} className="select select-bordered mb-2">
+          <option selected>All Jobs</option>
           <option>On-site Job</option>
           <option>Remote Job</option>
           <option>Hybrid</option>
@@ -51,7 +56,13 @@ const AppliedJobs = () => {
 
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="min-w-full bg-gray-800 text-left text-gray-100">
+          <thead
+            className={`min-w-full ${
+              theme === "dark"
+                ? "bg-gray-800 text-left text-gray-100"
+                : "text-gray-800 text-left bg-gray-100"
+            }`}
+          >
             <tr>
               <th
                 className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
@@ -101,15 +112,27 @@ const AppliedJobs = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {displayJobs.map((application, idx) => (
-              <TableRowAppliedJobs
-                key={idx}
-                application={application}
-                idx={idx}
-              ></TableRowAppliedJobs>
-            ))}
-          </tbody>
+          {displayJobs.length ? (
+            <tbody>
+              {displayJobs.map((application, idx) => (
+                <TableRowAppliedJobs
+                  key={application._idx}
+                  application={application}
+                  idx={idx}
+                ></TableRowAppliedJobs>
+              ))}
+            </tbody>
+          ) : (
+            <tbody>
+              {myAppliedJobs.map((application, idx) => (
+                <TableRowAppliedJobs
+                  key={application._idx}
+                  application={application}
+                  idx={idx}
+                ></TableRowAppliedJobs>
+              ))}
+            </tbody>
+          )}
         </table>
       </div>
     </div>

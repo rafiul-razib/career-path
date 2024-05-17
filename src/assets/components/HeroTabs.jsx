@@ -23,6 +23,7 @@ const HeroTabs = () => {
   }, []);
 
   const [currentTab, setCurrentTab] = useState("All Jobs");
+  console.log(currentTab);
 
   return (
     <div
@@ -38,7 +39,7 @@ const HeroTabs = () => {
       </div>
       <div className="mx-auto w-full max-w-5xl rounded-lg sm:border border-gray-200 bg-white overflow-hidden">
         {/* :SMALL DEVICES */}
-        <div className="mx-auto w-full max-w-md sm:hidden rounded-lg border border-gray-300 overflow-hidden">
+        {/* <div className="mx-auto w-full max-w-md sm:hidden rounded-lg border border-gray-300 overflow-hidden">
           <label htmlFor="current-tab" className="sr-only">
             Select a tab
           </label>
@@ -46,6 +47,8 @@ const HeroTabs = () => {
           <select
             name="current-tab"
             id="current-tab"
+            value={currentTab}
+            onChange={(event) => setCurrentTab(event.target.value)}
             defaultValue={tabs.find((tab) => tab.name === currentTab).name}
             className="form-select w-full sm:w-auto block border-none text-sm text-gray-500 font-semibold cursor-pointer focus:ring-0"
           >
@@ -53,18 +56,18 @@ const HeroTabs = () => {
               <option
                 key={tab.name}
                 value={tab.name}
-                onClick={() =>
-                  setCurrentTab(<Link to={tab.link}>{tab.name}</Link>)
-                }
+                onClick={() => setCurrentTab(tab.name)}
               >
-                <Link to={tab.link}>{tab.name}</Link>
+                <Link to={tab.link}>
+                  <span>{tab.name}</span>
+                </Link>
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         {/* :LARGE DEVICES */}
-        <div className="hidden sm:block overflow-hidden">
+        <div className=" sm:block overflow-hidden">
           {/* ::Navigation Tabs */}
           <nav aria-label="Tabs">
             <ul className="grid grid-flow-col auto-cols-fr">
@@ -80,7 +83,7 @@ const HeroTabs = () => {
                   <Link to={tab.link}>
                     <button
                       type="button"
-                      className="p-3 w-full inline-flex justify-center items-center text-center text-base font-semibold"
+                      className="p-3 w-full inline-flex justify-center items-center text-center text-xs lg:text-base font-semibold"
                       onClick={() => setCurrentTab(tab.name)}
                     >
                       {tab.name}
