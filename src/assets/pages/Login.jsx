@@ -28,6 +28,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
+        navigate(location?.state ? location.state : "/");
         Swal.fire({
           title: "Success!",
           text: "User Logged in successfully",
@@ -40,7 +41,6 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
-    navigate(location?.state ? location.state : "/");
   };
   // console.log(user);
   const handleSubmitSignIn = (e) => {
@@ -52,6 +52,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         // console.log(result.user);
+        navigate(location?.state ? location.state : "/");
         Swal.fire({
           title: "Success!",
           text: "User Logged in successfully",
@@ -65,7 +66,6 @@ const Login = () => {
         //   .post("https://career-path-server.vercel.app/jwt", user, { withCredentials: true })
         //   .then((res) => console.log(res.data));
         form.reset();
-        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         Swal.fire({
@@ -91,6 +91,8 @@ const Login = () => {
           displayName: name,
           photoURL: photoUrl,
         }).then(() => {
+          navigate(location?.state ? location.state : "/");
+
           Swal.fire({
             title: "Success!",
             text: "User Logged in successfully",
@@ -99,7 +101,7 @@ const Login = () => {
           });
           form.reset();
         });
-        navigate(location?.state ? location.state : "/");
+
         // console.log(result.user);
       })
       .catch((error) => {

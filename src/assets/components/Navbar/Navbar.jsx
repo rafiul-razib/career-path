@@ -64,6 +64,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut();
+    window.location.pathname = "/";
   };
   const [isOpen, setIsOpen] = useState(false);
   return (

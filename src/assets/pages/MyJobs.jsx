@@ -8,14 +8,20 @@ const MyJobs = () => {
   const [postedJobs, setPostedJobs] = useState([]);
   const { user } = useContext(AuthContext);
   const url = `https://career-path-server.vercel.app/myJobs?email=${user?.email}`;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(url, { withCredentials: true })
-      .then((res) => setPostedJobs(res.data));
+    axios.get(url, { withCredentials: true }).then((res) => {
+      setPostedJobs(res.data);
+      setIsLoading(false);
+    });
   }, [url]);
 
   console.log(postedJobs);
+
+  if (isLoading) {
+    return <span className="loading loading-bars loading-lg"></span>;
+  }
 
   return (
     <div>
